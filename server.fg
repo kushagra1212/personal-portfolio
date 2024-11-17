@@ -1,0 +1,322 @@
+bring Vortex
+bring Vec
+bring Str
+bring File
+bring Err
+bring Json
+bring Map
+const data: str, errLoadingData: Err::Result = File::read("data.json", "r")
+const dMap: Map::String = Json::parseObject(data)
+
+fun createExperienceSection() -> str {
+  var exprSec: str = ""
+  if (errLoadingData != Nir) {
+    return "<div class='text-red-500 text-center'>Error Loading Data</div>"
+  }
+  exprSec = exprSec + "<div id='experience' class='p-4 mt-16'>" 
+  exprSec = exprSec + "<h1 class='text-3xl font-bold text-center text-gray-800 mb-6'>Experience</h1>" 
+  const experiences: Vec::String = Json::parseArray(dMap.get("experience"))
+  exprSec = exprSec + "<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 items-start'>" 
+  for var i: int = 0 to experiences.size() - 1 {
+    const exprMap: Map::String = Json::parseObject(experiences.get(i))
+    exprSec = exprSec + "<div class='bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition duration-300'>" 
+    exprSec = exprSec + "<h2 class='text-xl font-bold text-gray-800'>" + exprMap.get("title") + "</h2>" 
+    exprSec = exprSec + "<h3 class='text-lg text-gray-600 mt-2'>" + exprMap.get("company") + ", " + exprMap.get("location") + " (" + exprMap.get("status") + ")</h3>" 
+    const points: Vec::String = Json::parseArray(exprMap.get("points"))
+    exprSec = exprSec + "<ul class='list-disc list-inside mt-4'>" 
+    for var z: int = 1 to points.size() - 1 {
+      exprSec = exprSec + "<li class='text-gray-700'>" + points.get(z) + "</li>" 
+    }
+    exprSec = exprSec + "</ul>" 
+    exprSec = exprSec + "</div>" 
+  }
+  exprSec = exprSec + "</div>" 
+  exprSec = exprSec + "</div>" 
+  exprSec = exprSec + "</div>" 
+  return exprSec
+}
+
+
+fun createProjectsSection() -> str {
+  var proj: str = ""
+  if (errLoadingData != Nir) {
+    return "<div  class='text-red-500 text-center'>Error Loading Data</div>"
+  }
+  /; Add section heading
+
+  proj = proj + "<div id='projects' class='p-4 mt-16'>" 
+  proj = proj + "<h1 class='text-3xl font-bold text-center text-gray-800 mb-6'>Recent Projects</h1>"
+  /; Parse data and projects
+ 
+  const projects: Vec::String = Json::parseArray(dMap.get("projects"))
+  /; Start grid container
+
+  proj = proj + "<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start'>" 
+  for var i: int = 0 to projects.size() - 1 {
+    const projMap: Map::String = Json::parseObject(projects.get(i))
+    /; Card container
+
+    proj = proj + "<div class='bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition duration-300'>"
+    /; Project image
+
+    /; Project title
+ 
+    proj = proj + "<h2 class='text-xl font-bold text-gray-800 mb-2'>" + projMap.get("title") + "</h2>" 
+    const imageUrl: str = projMap.get("image")
+    if (imageUrl != Nir) {
+      proj = proj + "<div class='relative w-full h-56 overflow-hidden'>" 
+      proj = proj + "<img src='" + imageUrl + "' alt='" + projMap.get("title") + "' class='w-full h-full object-cover rounded-t-lg hover:scale-105 transition-transform duration-300'>" 
+      proj = proj + "</div>" 
+    }
+    /; Links
+
+    const links: Vec::String = Json::parseArray(projMap.get("links"))
+    if (links.size() > 0) {
+      proj = proj + "<div class='mt-2'>" 
+      for var z: int = 1 to links.size() - 1 : 2 {
+        proj = proj + "<a href='" + links.get(z + 1) + "' target='_blank' class='text-blue-600 underline hover:text-blue-800 mr-4'>" + links.get(z) + "</a>" 
+      }
+      proj = proj + "</div>" 
+    }
+    /; Description points
+
+    const points: Vec::String = Json::parseArray(projMap.get("points"))
+    if (points.size() > 0) {
+      proj = proj + "<ul class='list-disc list-inside mt-4'>" 
+      for var z: int = 1 to points.size() - 1 {
+        proj = proj + "<li class='text-gray-700'>" + points.get(z) + "</li>" 
+      }
+      proj = proj + "</ul>" 
+    }
+    /; Tech Stack
+
+    const techStack: Vec::String = Json::parseArray(projMap.get("techStack"))
+    if (techStack.size() > 0) {
+      proj = proj + "<div class='mt-4'>" 
+      proj = proj + "<h3 class='text-lg font-semibold text-gray-800'>Tech Stack:</h3>" 
+      proj = proj + "<div class='flex flex-wrap mt-2 gap-2'>" 
+      for var z: int = 1 to techStack.size() - 1 {
+        proj = proj + "<span class='bg-gray-100 text-gray-700 px-3 py-1 rounded-lg shadow-sm'>" + techStack.get(z) + "</span>" 
+      }
+      proj = proj + "</div>" 
+    }
+    /; Close card
+
+    proj = proj + "</div>" 
+    proj = proj + "</div>" 
+  }
+  proj = proj + "</div>"    /; Close section
+ 
+  return proj
+}
+
+
+fun createSkillsSection() -> str {
+  var skillsSec: str = ""
+  /; Add section heading
+
+  skillsSec = skillsSec + "<div id='skills' class='p-4 mt-16'>" 
+  skillsSec = skillsSec + "<h1 class='text-3xl font-bold text-center text-gray-800 mb-8'>Skills</h1>"
+  /; Parse data and skills
+ 
+  const skills: Vec::String = Json::parseArray(dMap.get("skills"))
+  /; Container for skill categories
+
+  skillsSec = skillsSec + "<div class='space-y-8'>"    /; Add spacing between categories
+ 
+  for var i: int = 0 to skills.size() - 1 {
+    const skillCategory: Map::String = Json::parseObject(skills.get(i))
+    const title: str = skillCategory.get("title")
+    const skillSet: Vec::String = Json::parseArray(skillCategory.get("set"))
+    /; Skip empty or invalid categories
+
+    if (title == Nir || skillSet.size() <= 1) {
+      continue
+    }
+    /; Skill category header
+
+    skillsSec = skillsSec + "<div>" 
+    skillsSec = skillsSec + "<h2 class='text-2xl font-semibold text-gray-800 border-b-2 border-gray-300 pb-2 mb-4'>" + title + "</h2>"
+    /; Skill items
+ 
+    skillsSec = skillsSec + "<div class='flex flex-wrap gap-2'>"      /; Flexbox for wrapping skill items
+ 
+    for var j: int = 1 to skillSet.size() - 1 {      /; Skip the first placeholder value
+
+      skillsSec = skillsSec + "<span class='bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm shadow-sm'>" + skillSet.get(j) + "</span>" 
+    }
+    skillsSec = skillsSec + "</div>"      /; Close skill items container
+ 
+    skillsSec = skillsSec + "</div>"      /; Close category
+ 
+  }
+  /; Close container
+
+  skillsSec = skillsSec + "</div>"    /; Close all categories
+ 
+  skillsSec = skillsSec + "</div>"    /; Close section
+ 
+  return skillsSec
+}
+
+
+fun createHeaderSection() -> str {
+  var headerSec: str = ""
+  /; Parse data and header info
+
+  const header: Map::String = Json::parseObject(dMap.get("header"))
+  const name: str = header.get("name")
+  const contact: Vec::String = Json::parseArray(header.get("contact"))
+  /; Start header container
+
+  headerSec = headerSec + "<div class='p-8 bg-gradient-to-r from-gray-700 via-gray-800 to-black text-white rounded-bl-lg rounded-br-lg shadow-lg'>" 
+  headerSec = headerSec + "<div class='text-center'>" 
+  headerSec = headerSec + "<h1 class='text-5xl font-extrabold mb-4'>" + name + "</h1>" 
+  headerSec = headerSec + "</div>"
+  /; Add contact links
+ 
+  headerSec = headerSec + "<div class='flex justify-center flex-wrap gap-6 mt-6'>" 
+  for var i: int = 1 to contact.size() - 1 {
+    const contactInfo: Map::String = Json::parseObject(contact.get(i))
+    const type_: str = contactInfo.get("type")
+    const url: str = contactInfo.get("url")
+    /; Add icons for contact types
+
+    var iconClass: str = ""
+    switch type_ {
+case "LinkedIn" : {
+      iconClass = "fab fa-linkedin" 
+    }
+case "Email" : {
+      iconClass = "fas fa-envelope" 
+    }
+case "GitHub" : {
+      iconClass = "fab fa-github" 
+    }
+case "LeetCode" : {
+      iconClass = "fas fa-code" 
+    }
+case "Medium" : {
+      iconClass = "fas fa-pen-fancy" 
+    }
+default : {
+      iconClass = "" 
+    }
+}
+
+    headerSec = headerSec + "<a href='" + url + "' target='_blank' class='flex items-center gap-2 text-white font-medium hover:underline hover:text-gray-200'>" 
+    headerSec = headerSec + "<i class='" + iconClass + " text-xl'></i> " + type_ 
+    headerSec = headerSec + "</a>" 
+  }
+  headerSec = headerSec + "</div>"
+  /; Close header container
+ 
+  headerSec = headerSec + "</div>" 
+  return headerSec
+}
+
+
+fun createOthersInfoSection() -> str {
+  var othersSec: str = ""
+  /; Add section heading
+
+  othersSec = othersSec + "<div id='education' class='p-4 mb-48 mt-16'>" 
+  othersSec = othersSec + "<h1 class='text-3xl font-bold text-center text-gray-800 mb-8'>Education & Achievements</h1>"
+  /; Parse data and othersInfo
+ 
+  const othersInfo: Vec::String = Json::parseArray(dMap.get("othersInfo"))
+  /; Loop through each category in othersInfo
+
+  for var i: int = 0 to othersInfo.size() - 1 {
+    const infoCategory: Map::String = Json::parseObject(othersInfo.get(i))
+    var categoryTitles: Vec::String = new Vec::String()
+    categoryTitles.add("Education")
+    categoryTitles.add("Achievements")
+    categoryTitles.add("Mentorship")
+    for var j: int = 0 to categoryTitles.size() - 1 {
+      const title: str = categoryTitles.get(j)
+      const items: Vec::String = Json::parseArray(infoCategory.get(title))
+      /; Skip invalid categories
+
+      if (title == Nir || items.size() <= 1) {
+        continue
+      }
+      /; Category heading
+
+      othersSec = othersSec + "<div class='mb-6'>" 
+      othersSec = othersSec + "<h2 class='text-2xl font-semibold text-gray-800 border-b-2 border-gray-300 pb-2 mb-4'>" + title + "</h2>"
+      /; Items list
+ 
+      othersSec = othersSec + "<ul class='list-disc list-inside space-y-2'>" 
+      for var k: int = 1 to items.size() - 1 {        /; Skip the first placeholder value
+
+        othersSec = othersSec + "<li class='text-gray-700'>" + items.get(k) + "</li>" 
+      }
+      othersSec = othersSec + "</ul>" 
+      othersSec = othersSec + "</div>"        /; Close category container
+ 
+    }
+  }
+  /; Close section container
+
+  othersSec = othersSec + "</div>" 
+  return othersSec
+}
+
+
+fun createFloatingTip() -> str {
+  var floatingTipSec: str = ""
+  /; Start floating tip container
+
+  floatingTipSec = floatingTipSec + "<div class='fixed bottom-4 right-4 bg-blue-600 text-white p-4 rounded-lg shadow-xl max-w-sm w-full transform translate-x-1' style='z-index: 1000;'>"
+  /; Title for the tip section
+ 
+  floatingTipSec = floatingTipSec + "<h2 class='font-semibold text-sm mb-2'>This Website is running on Flow-Wing Programming Language</h2>"
+  /; Tip message
+ 
+  floatingTipSec = floatingTipSec + "<div class='flex flex-wrap gap-2'>" 
+  floatingTipSec = floatingTipSec + "<a href='#experience' class='bg-blue-800 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 transition duration-300'>Experience</a>" 
+  floatingTipSec = floatingTipSec + "<a href='#projects' class='bg-blue-800 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 transition duration-300'>Recent Projects</a>" 
+  floatingTipSec = floatingTipSec + "<a href='#skills' class='bg-blue-800 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 transition duration-300'>Skills</a>" 
+  floatingTipSec = floatingTipSec + "<a href='#education' class='bg-blue-800 text-white py-2 px-4 rounded-lg text-sm hover:bg-blue-700 transition duration-300'>Education & Achievements</a>" 
+  floatingTipSec = floatingTipSec + "</div>"
+  /; Close container
+ 
+  floatingTipSec = floatingTipSec + "</div>" 
+  return floatingTipSec
+}
+
+
+fun createLandingPageBody() -> str {
+  return createHeaderSection() + createExperienceSection() + createProjectsSection() + createSkillsSection() + createOthersInfoSection() + createFloatingTip()
+}
+
+
+fun createLandingPage() -> str {
+  const head: str, errLoadingHead: Err::Result = File::read("head.html", "r")
+  if errLoadingHead != Nir {
+    return " Error Loading Page "
+  }
+  return `
+  <html lang="en">` + head + `
+  <body>
+  ` + createLandingPageBody() + `
+  </body>
+</html>
+  `
+}
+
+
+fun handleLandingPage(request: Vortex::HttpRequest, response: Vortex::HttpResponse) -> nthg {
+  response.send({
+    body: createLandingPage(),
+    content_type: "text/html",
+    status: 200
+  })
+}
+
+const PORT: int = 8080
+const server: Vortex::Server = new Vortex::Server(PORT)
+server.setRoute("GET", "/", handleLandingPage)
+print("Server started on port " + PORT, "\n")
+server.start()

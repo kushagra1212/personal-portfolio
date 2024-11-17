@@ -1,0 +1,255 @@
+{
+  "experience": [
+    {},
+    {
+      "title": "Full Stack Developer",
+      "company": "Badho",
+      "location": "Gurugram, Haryana, India",
+      "status": "01/2024 - Present",
+      "points": [
+        ".",
+        "Actively contributed as a Full Stack Developer Intern at Badho, focusing on three core applications: Badho Buyer, Badho Seller, and Sathi App. Utilized a diverse tech stack including React Native, Node.js, Express, GraphQL, Hasura, and PostgreSQL to address various challenges and implement new features.",
+        "Improved payment mode handling to streamline the addition process.",
+        "Set up logging for employee app to track login information effectively.",
+        "Enhanced OTA update flow for a smoother user experience.",
+        "Developed 'Scan and Redeem Voucher' functionality.",
+        "Added scratch card flow for onboarding completion, improving user engagement.",
+        "Optimized Google Maps API usage and created backend routes to reduce Google Maps API billing costs.",
+        "Integrated Branch.io for attribution and deep linking across three apps, enhancing user experience and improving attribute tracking.",
+        "Enhanced the employee incentive flow for better usability.",
+        "Migrated Badho's authentication services to Azure Functions, achieving 99% uptime.",
+        "Set up and integrated Blitzlama for dynamic user surveys.",
+        "Implemented dynamic screens rendered based on configurations to increase app flexibility.",
+        "Introduced the 'Sister Products' flow to display related products.",
+        "Replaced old product cards with a new, updated design across the app."
+      ]
+    },
+    {
+      "title": "Full-Stack Developer, Intern",
+      "company": "BuyProperly",
+      "location": "Toronto, Ontario, Canada",
+      "status": "06/2022 - 09/2022",
+      "points": [
+        ".",
+        "Backend & Frontend Development: Improved efficiency and user experience using Angular, Node.js, Express, and PostgreSQL.",
+        "Proactively managed and resolved technical issues through troubleshooting, testing, maintenance and support for the core product software and databases, ensuring seamless functionality and uptime.",
+        "Initiated and executed the implementation of various technologies, including Google Sign In, HubSpot CRM integration resulting in streamlined operations and enhanced user experience.",
+        "Initiated the design and development of an Internal Application, leveraging technologies such as React and Recoil.js. This initiative led to notable improvements in overall productivity."
+      ]
+    },
+    {
+      "title": "Full-Stack Developer, Intern",
+      "company": "DocsUp",
+      "location": "New Delhi, India",
+      "status": "10/2021 - 01/2022",
+      "points": [
+        ".",
+        "Optimized the website houseofplug.com, resulting in a 85% reduction in latency through restructuring of the API, development of additional features, resolving major bugs, and redesign of the Admin Panel UI.",
+        "Designed and developed a Full-Stack web application and custom-built Admin Panel with integrated payments (Stripe) for a restaurant using the Latest technologies of React, MongoDB, Express and NodeJs.",
+        "Worked, built, and developed 7 medium to large-scale web Full-Stack projects."
+      ]
+    }
+  ],
+  "projects": [
+    {},
+    {
+      "title": "Flow-Wing Programming Language",
+      "image": "/static/flowwing-header.png",
+      "links": [
+        ".",
+        "Website (Running on Flow-Wing)",
+        "https://flowwing.frii.site/",
+        "Read Docs",
+        "https://flow-wing-docs.vercel.app/",
+        "GitHub",
+        "https://github.com/kushagra1212/Flow-Wing"
+      ],
+      "points": [
+        ".",
+        "Flow-Wing is a modern programming language that combines the best of both worlds: static and dynamic typing. Designed for both novice and experienced developers, it emphasizes readability and expressiveness, enabling users to sculpt logic with the elegance of flow. Flow-Wing supports object-oriented programming and provides robust features such as dynamic and static memory allocation, automatic garbage collection, and module support. With compile-time checks, Flow-Wing helps catch errors early, facilitating a smooth development experience.",
+        "Run a server or create games in Flow-Wing. Learn more. (https://flowwing.frii.site/)",
+        "FlowWing comes with an Ahead-of-Time Compiler, a Just-In-Time Compiler, and a REPL.",
+        "FlowWing also comes with LSP support for VS Code. (https://marketplace.visualstudio.com/items?itemName=kushagra.Flow-Wing)"
+      ],
+      "techStack": [
+        ".",
+        "C++",
+        "C",
+        "LLVM",
+        "lexer",
+        "parser",
+        "gTest",
+        "Docker",
+        "REPL",
+        "AOT",
+        "JIT",
+        "lsp",
+        "TypeScript"
+      ]
+    },
+    {
+      "title": "Foundo: Lost and Found ( React Native )",
+      "image": "/static/foundo-header.png",
+      "links": [
+        ".",
+        "Video Teaser",
+        "https://www.youtube.com/watch?v=lAMOcoMJo1M",
+        "Download App",
+        "https://www.amazon.in/Kushagra-Rathore-Foundo-Lost-Found/dp/B0BTWKPSSG/ref=sr_1_3?crid=CG8M8E4FJZU3&keywords=lost+and+found&qid=1676153695&s=mobile-apps&sprefix=lost+and+foundo%2Cmobile-apps%2C228&sr=1-3_",
+        "GitHub",
+        "https://github.com/kushagra1212/foundo-app"
+      ],
+      "points": [
+        ".",
+        "Developed an AI-powered Lost & Found Android application with an intuitive UI. The app enables users to report lost or found items, search and filter listings, connect and real time chat with other users. It also uses location-based services and a map for precise recommendations.",
+        "This AI Powered app enabled users to easily report lost or found items by collecting pictures and necessary information, search and filter listings, connect and chat with other users, and access location-based features, login/authentication, password reset, privacy settings, and user profiles. Utilized Jest for unit, integration, and API testing, and Detox for frontend end-to-end (E2E) testing.",
+        "Backend built with Node.js, Express, MySQL, and WebSocket for real-time chat functionality. Utilized Docker in conjunction with GitHub Actions(CI/CD) for testing and deployment."
+      ],
+      "techStack": [
+        ".",
+        "React-Native",
+        "Typescript",
+        "Javascript",
+        "Jest (Unit & Integration Testing)",
+        "Detox (E2E)",
+        "Node.js",
+        "AWS S3",
+        "AWS RDS",
+        "Express",
+        "MySQL",
+        "WebSocket",
+        "Docker",
+        "GitHub Actions (CI/CD)"
+      ]
+    },
+
+    {
+      "title": "Eimentum: ( Social Networking Website )",
+      "links": [
+        ".",
+        "Video Teaser",
+        "https://www.youtube.com/watch?v=VdUO6L69eyY",
+        "Website",
+        "https://eimentum.vercel.app/signin",
+        "GitHub",
+        "https://github.com/kushagra1212/Eimentum"
+      ],
+      "points": [
+        ".",
+        "Developed and launched a fully featured social networking website, enabling users to create profiles, post and like and share content, connect with friends, chat in real-time, and view disappearing stories, resulting in a highly engaging and interactive user experience."
+      ],
+      "techStack": [
+        ".",
+        "React",
+        "Redux",
+        "typescript",
+        "JavaScript",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Socket .IO",
+        "JWT"
+      ]
+    }
+  ],
+  "skills": [
+    {},
+    {
+      "title": "Languages",
+      "set": [".", "C++", "C", "JavaScript", "TypeScript", "HTML", "CSS", "SQL"]
+    },
+    {
+      "title": "Frameworks",
+      "set": [
+        ".",
+        "React",
+        "React Native",
+        "Node.js",
+        "Express",
+        "Next.js",
+        "Angular",
+        "Redux",
+        "RTK Query",
+        "jQuery",
+        "Tailwind CSS",
+        "Material UI",
+        "GraphQL",
+        "Jest",
+        "Detox"
+      ]
+    },
+    {
+      "title": "CI/CD",
+      "set": [".", "Docker", "GitHub Actions (CI/CD)"]
+    },
+    {
+      "title": "Databases",
+      "set": [".", "MySQL", "MongoDB", "Postgresql"]
+    },
+    {
+      "title": "Tools",
+      "set": [".", "Git", "VSCode", "Postman", "Jira", "Figma", "Hasura"]
+    },
+    {
+      "title": "Cloud Services Familiarity",
+      "set": [".", "AWS", "Azure"]
+    },
+    {
+      "title": "CS - Fundamentals",
+      "set": [
+        ".",
+        "Data Structures & Algorithms",
+        "Object Oriented Programming",
+        "Operating System",
+        "Databases"
+      ]
+    }
+  ],
+  "othersInfo": [
+    {},
+    {
+      "Education": [
+        ".",
+        "Major in Computer Science and Engineering <strong>( CGPA: 9.35 )</strong> 08/2020 - 05/2024",
+        "Bachelor of technology (B.TECH) MediCaps University Indore, MP, India "
+      ],
+      "Achievements": [
+        ".",
+        "Secured 38th Global Rank in Code-Chef September cook-off 2021",
+        "Max 4 stars on CodeChef Max rating 1908 and 1851 on LeetCode",
+        "Secured 2nd rank in an Intra-House Coding Competition"
+      ],
+      "Mentorship": [
+        ".",
+        "<strong>Competitive Programming Mentor (Google DSC):</strong> Organized Coding Contests | Roadmaps | Guidance | Mentorship. 09/2021 - 06/2022",
+        "<strong>Competitive Coder – Executive Member(CodeChef Chapter):</strong> Prepared Problems for the CodeChef Contests. 01/2021 - 06/2021"
+      ]
+    }
+  ],
+  "header": {
+    "name": "Kushagra Rathore",
+    "contact": [
+      {},
+      {
+        "type": "LinkedIn",
+        "url": "https://www.linkedin.com/in/kushagra-rathore/"
+      },
+      {
+        "type": "Email",
+        "url": "mailto:kushagrarathore002@gmail.com"
+      },
+      {
+        "type": "GitHub",
+        "url": "https://github.com/kushagra1212"
+      },
+      {
+        "type": "LeetCode",
+        "url": "https://leetcode.com/kushagra1212"
+      },
+      {
+        "type": "Medium",
+        "url": "https://medium.com/@kushagrarathore002/mastering-callbacks-and-promises-a-beginners-guide-81bb4724df97"
+      }
+    ]
+  }
+}
